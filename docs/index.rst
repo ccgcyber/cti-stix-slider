@@ -6,7 +6,7 @@
 Welcome to stix2-slider's documentation!
 ========================================
 
-To convert STIX 1.x XML to STIX 2.0 JSON use the `stix2-elevator <https://pypi.python.org/pypi/stix2-elevator>`_.
+To convert STIX 1.x XML to STIX 2.x JSON use the `stix2-elevator <https://pypi.python.org/pypi/stix2-elevator>`_.
 
 .. toctree::
    :maxdepth: 2
@@ -19,7 +19,7 @@ To convert STIX 1.x XML to STIX 2.0 JSON use the `stix2-elevator <https://pypi.p
    cyber-observables
    conversion-issues
    slider_log_messages
-
+   contributing
 
 
 Indices and tables

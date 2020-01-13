@@ -4,10 +4,11 @@ import os
 
 from six import StringIO
 from six.moves import zip
+from stixmarx import markingmap, xml
+
 from stix2slider.cli import slide_file
 from stix2slider.options import initialize_options
 from stix2slider.utils import find_dir
-from stixmarx import markingmap, xml
 
 TESTED_JSON_FILES = []
 JSON_FILENAMES = []
@@ -98,11 +99,11 @@ def marking_compare(x1, x2):
     assert len(nodeset_x1) == len(nodeset_x2)
 
 
-def setup_tests():
+def setup_tests(version):
     directory = os.path.dirname(__file__)
 
-    xml_idioms_dir = find_dir(directory, "idioms-xml")
-    json_idioms_dir = find_dir(directory, "idioms-json")
+    xml_idioms_dir = find_dir(directory, "idioms-xml-from" + "-" + version)
+    json_idioms_dir = find_dir(directory, "idioms-json" + "-" + version)
 
     print("Setting up tests from following directories...")
     print(xml_idioms_dir)
@@ -137,7 +138,8 @@ def test_idiom_mapping(test_file, stored_master):
 
 
 def pytest_generate_tests(metafunc):
-    setup_tests()
+    version = os.environ['VERSION']
+    setup_tests(version)
     argnames = ["test_file", "stored_master"]
     argvalues = [(x, y) for x, y in zip(TESTED_JSON_FILES, MASTER_XML_FILES)]
 
